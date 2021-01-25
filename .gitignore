@@ -1,0 +1,10 @@
+#Ignore everything in the root
+/*
+
+# Un-ignore these folders and directories
+!/alacritty/
+!/nvim/
+!/xmonad/
+!link_configs.sh
+!gitconfig
+!.gitignore

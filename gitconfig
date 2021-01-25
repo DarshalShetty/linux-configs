@@ -1,0 +1,18 @@
+[user]
+    name = Darshal Shetty
+    email = darshalcs@gmail.com
+
+[core]
+    editor = nvim
+
+[color]
+    ui = auto
+
+[diff]
+    tool = vimdiff
+
+[alias]
+    ci = commit
+    st = status
+    co = checkout
+    g  = log --all --decorate --oneline --graph
