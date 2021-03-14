@@ -5,6 +5,7 @@
 !/alacritty/
 !/nvim/
 !/xmonad/
+!/xmobar/
 !link_configs.sh
 !gitconfig
 !.gitignore

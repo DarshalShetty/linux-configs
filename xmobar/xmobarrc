@@ -1,0 +1,42 @@
+Config { font = "xft:Lat2-Terminus16:pixelsize=16:antialias=true:hinting:true"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "#282828"
+        , fgColor = "#ebdbb2"
+        , position = TopW L 100
+        , commands = [ Run Weather "CYVR" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                        -- network activity monitor (dynamic interface resolution)
+                        , Run DynNetwork     [ "--template" , "<dev>: \x25b2<tx>kB/s \x25bc<rx>kB/s"
+                             , "--Low"      , "1000"       -- units: B/s
+                             , "--High"     , "5000"       -- units: B/s
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 10
+                        , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                        , Run Memory ["-t","Mem: <usedratio>%"] 10
+                        , Run Swap [] 10
+                        , Run Com "uname" ["-s","-r"] "" 36000
+                        , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+
+                        -- battery monitor
+                        , Run Battery        [ "--template" , "Batt: <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "darkred"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkgreen"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+                        ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "%cpu% | %memory% * %swap% | %dynnetwork% }{%battery% | <fc=yellow>%date%</fc> | %uname% | %CYVR% "
+        }
