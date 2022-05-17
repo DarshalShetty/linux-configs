@@ -6,6 +6,7 @@ import Data.Monoid
 import System.Exit
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 
@@ -225,7 +226,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = ewmhDesktopsEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging

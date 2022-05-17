@@ -4,16 +4,22 @@
 
 [core]
     editor = nvim
-	autocrlf = input
+    autocrlf = input
 
 [color]
     ui = auto
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 
 [alias]
     ci = commit
     st = status
     co = checkout
     g  = log --all --decorate --oneline --graph
+[credential]
+	helper = cache
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
